@@ -1,0 +1,7 @@
+{
+  "name": "game notif",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
