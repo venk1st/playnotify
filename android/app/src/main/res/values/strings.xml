@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PlayNotify</string>
+    <string name="title_activity_main">PlayNotify</string>
+    <string name="package_name">com.playnotify.app</string>
+    <string name="custom_url_scheme">com.playnotify.app</string>
+</resources>

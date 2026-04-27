@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true" class="gameover-content">
+  <div class="go-container">
+
+    <!-- Glow blob background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- New Record Badge -->
+    <div class="new-record" *ngIf="isNewRecord">
+      🏆 REKOR BARU!
+    </div>
+
+    <!-- Icon -->
+    <div class="result-icon">
+      <span class="icon-pulse">{{ modeEmoji }}</span>
+    </div>
+
+    <h1 class="over-title">GAME OVER</h1>
+    <p class="over-sub">Fokus kamu habis!</p>
+
+    <!-- Stars -->
+    <div class="stars-row">
+      <span *ngFor="let i of [1,2,3,4,5]"
+            class="star"
+            [class.active]="i <= rating.stars">★</span>
+    </div>
+    <div class="rating-label">{{ rating.label }}</div>
+
+    <!-- Score Card -->
+    <div class="score-card">
+      <div class="score-row">
+        <div class="score-cell">
+          <div class="cell-label">MODE</div>
+          <div class="cell-value mode-val">{{ modeEmoji }} {{ modeLabel }}</div>
+        </div>
+        <div class="divider"></div>
+        <div class="score-cell">
+          <div class="cell-label">RONDE</div>
+          <div class="cell-value">{{ gameState.round }}</div>
+        </div>
+      </div>
+      <div class="score-big">
+        <div class="cell-label">SKOR AKHIR</div>
+        <div class="score-number">{{ gameState.score }}</div>
+      </div>
+      <div class="highscore-row">
+        <ion-icon name="trophy-outline"></ion-icon>
+        High Score:&nbsp;<strong>{{ gameState.highScore }}</strong>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="go-actions">
+      <button class="btn-replay" (click)="replay()">
+        <ion-icon name="refresh-outline"></ion-icon>
+        Main Lagi
+      </button>
+      <button class="btn-home" (click)="goHome()">
+        <ion-icon name="home-outline"></ion-icon>
+        Kembali ke Menu
+      </button>
+    </div>
+
+  </div>
+</ion-content>

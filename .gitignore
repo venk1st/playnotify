@@ -1,70 +1,76 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
-
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
-
-*.log
-log.txt
-
-
-/.sourcemaps
-/.versions
-/coverage
-
-# Ionic
-/.ionic
+# --- DEPENDENCIES ---
+node_modules/
+/dist
 /www
 /platforms
 /plugins
+/.sourcemaps
+/.versions
 
-# Compiled output
-/dist
-/tmp
+# --- ANGULAR ---
+.angular/
+/.angular/cache
+.sass-cache/
+/coverage
 /out-tsc
 /bazel-out
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# --- CAPACITOR & ANDROID/IOS ARTIFACTS ---
+# Abaikan folder build dan file sistem lokal di folder platform
+android/app/build/
+android/.gradle/
+android/.idea/
+android/local.properties
+android/capacitor-cordova-android-plugins
+ios/App/build/
+ios/App/Pods/
+ios/App/.idea/
+ios/App/Config.xcconfig
 
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-project
-*.sublime-workspace
+# Abaikan aset web yang disalin oleh Capacitor (karena ini hasil build dari folder /www)
+android/app/src/main/assets/public
+ios/App/App/public
 
-# Visual Studio Code
+# --- IDE & EDITORS ---
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
 
+# --- LOGS ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+log.txt
 
-# Miscellaneous
-/.angular
-/.angular/cache
-.sass-cache/
-/.nx
-/.nx/cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-
-# System files
+# --- SYSTEM FILES ---
 .DS_Store
 Thumbs.db
+$RECYCLE.BIN/
+ehthumbs.db
+Desktop.ini
+
+# --- SENSITIVE DATA (KEAMANAN) ---
+# Jika Anda punya file environment atau kunci API, sebaiknya diabaikan
+.env
+.env.local
+.env.*.local
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# --- TEMPORARY ---
+.tmp
+*.tmp
+*.tmp.*

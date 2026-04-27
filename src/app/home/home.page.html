@@ -1,20 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="home-content">
+  <div class="home-container">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Header -->
+    <div class="header-section">
+      <div class="app-icon">🔔</div>
+      <h1>Notification<br><span>Game</span></h1>
+      <p class="subtitle">Latih fokusmu di tengah distraksi!</p>
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- Mode Cards -->
+    <div class="modes-section">
+      <h2 class="section-label">Pilih Mode</h2>
+
+      <!-- Sekolah -->
+      <button class="mode-card school" (click)="play('school')">
+        <div class="card-left">
+          <div class="mode-emoji">📚</div>
+          <div class="mode-info">
+            <div class="mode-title">Mode Sekolah</div>
+            <div class="mode-desc">Timer 5 detik · Tingkat Sedang</div>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="hs-label">BEST</div>
+          <div class="hs-value">{{ highScores.school }}</div>
+          <ion-icon name="chevron-forward-outline" class="arrow"></ion-icon>
+        </div>
+      </button>
+
+      <!-- Kerja -->
+      <button class="mode-card work" (click)="play('work')">
+        <div class="card-left">
+          <div class="mode-emoji">💼</div>
+          <div class="mode-info">
+            <div class="mode-title">Mode Kerja</div>
+            <div class="mode-desc">Timer 3 detik · Tingkat Sulit</div>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="hs-label">BEST</div>
+          <div class="hs-value">{{ highScores.work }}</div>
+          <ion-icon name="chevron-forward-outline" class="arrow"></ion-icon>
+        </div>
+      </button>
+
+      <!-- Sosial -->
+      <button class="mode-card social" (click)="play('social')">
+        <div class="card-left">
+          <div class="mode-emoji">📱</div>
+          <div class="mode-info">
+            <div class="mode-title">Mode Sosial</div>
+            <div class="mode-desc">Timer 4 detik · Paling Menipu</div>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="hs-label">BEST</div>
+          <div class="hs-value">{{ highScores.social }}</div>
+          <ion-icon name="chevron-forward-outline" class="arrow"></ion-icon>
+        </div>
+      </button>
+    </div>
+
+    <!-- Footer hint -->
+    <div class="footer-hint">
+      <ion-icon name="information-circle-outline"></ion-icon>
+      Buka notifikasi penting · Abaikan distraksi
+    </div>
+
   </div>
 </ion-content>

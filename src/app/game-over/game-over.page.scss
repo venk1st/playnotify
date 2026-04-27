@@ -1,0 +1,229 @@
+ion-content.gameover-content {
+  --background: #0f0f1a;
+}
+
+.go-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 60px 24px 50px;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Glow blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 {
+  width: 260px; height: 260px;
+  background: #6c63ff;
+  top: -60px; left: -60px;
+}
+.blob-2 {
+  width: 220px; height: 220px;
+  background: #ef4444;
+  bottom: 60px; right: -40px;
+}
+
+/* All children above blobs */
+.go-container > *:not(.blob) { position: relative; z-index: 1; }
+
+/* New Record */
+.new-record {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(251,191,36,0.35);
+  animation: pop 0.4s ease;
+}
+
+/* Icon */
+.result-icon {
+  margin-bottom: 12px;
+  .icon-pulse {
+    font-size: 64px;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+.over-title {
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -1px;
+}
+
+.over-sub {
+  color: rgba(255,255,255,0.45);
+  font-size: 15px;
+  margin: 0 0 20px;
+}
+
+/* Stars */
+.stars-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+
+  .star {
+    font-size: 30px;
+    color: rgba(255,255,255,0.15);
+    transition: color 0.3s;
+
+    &.active {
+      color: #fbbf24;
+      text-shadow: 0 0 12px rgba(251,191,36,0.6);
+    }
+  }
+}
+
+.rating-label {
+  color: rgba(255,255,255,0.6);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+/* Score card */
+.score-card {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+  .divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+.score-cell {
+  text-align: center;
+  .cell-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cell-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    &.mode-val { font-size: 15px; }
+  }
+}
+
+.score-big {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 16px;
+  text-align: center;
+
+  .cell-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .score-number {
+    font-size: 60px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+    background: linear-gradient(135deg, #6c63ff, #48cfad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.highscore-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: #fbbf24;
+  font-size: 14px;
+
+  ion-icon { font-size: 18px; }
+  strong { color: #fff; }
+}
+
+/* Buttons */
+.go-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  button {
+    width: 100%;
+    height: 58px;
+    border: none;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.15s ease;
+    ion-icon { font-size: 20px; }
+    &:active { transform: scale(0.96); }
+  }
+
+  .btn-replay {
+    background: linear-gradient(135deg, #6c63ff, #48cfad);
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(108,99,255,0.35);
+  }
+
+  .btn-home {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

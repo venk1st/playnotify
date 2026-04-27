@@ -1,5 +1,5 @@
 {
-  "name": "game notif",
+  "name": "PlayNotify",
   "integrations": {
     "capacitor": {}
   },

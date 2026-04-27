@@ -1,0 +1,85 @@
+<ion-content [fullscreen]="true" class="game-content" [attr.data-mode]="gameMode">
+
+  <!-- ── HUD ── -->
+  <div class="hud">
+    <div class="hud-stat">
+      <div class="hud-label">MODE</div>
+      <div class="hud-value small">{{ modeLabel }}</div>
+    </div>
+
+    <div class="hud-focus">
+      <div class="hud-label focus-label">
+        FOKUS
+        <span class="focus-number">{{ focus }}%</span>
+      </div>
+      <ion-progress-bar
+        [value]="focus / 100"
+        [color]="focusColor"
+        class="focus-bar">
+      </ion-progress-bar>
+    </div>
+
+    <div class="hud-stat text-right">
+      <div class="hud-label">SKOR</div>
+      <div class="hud-value">{{ score }}</div>
+    </div>
+  </div>
+
+  <!-- ── Timer Bar ── -->
+  <div class="timer-track">
+    <div class="timer-fill" [style.width.%]="timeLeft"
+         [class.timer-warn]="timeLeft < 40"
+         [class.timer-danger]="timeLeft < 20">
+    </div>
+  </div>
+
+  <!-- ── Notification Card ── -->
+  <div class="card-stage">
+    <div class="notif-card" [class.visible]="cardVisible">
+
+      <!-- Phone status bar mock -->
+      <div class="phone-bar">
+        <ion-icon name="wifi-outline"></ion-icon>
+        <span class="time-text">Ronde {{ round }}</span>
+        <ion-icon name="battery-half-outline"></ion-icon>
+      </div>
+
+      <div class="notif-body" *ngIf="currentNotification">
+        <div class="notif-row">
+          <div class="notif-icon-wrap" [style.background]="currentNotification.color + '22'">
+            <ion-icon [name]="currentNotification.icon" [style.color]="currentNotification.color"></ion-icon>
+          </div>
+          <div class="notif-text">
+            <div class="notif-app">{{ currentNotification.app }}</div>
+            <div class="notif-title">{{ currentNotification.title }}</div>
+          </div>
+          <div class="notif-time">Baru saja</div>
+        </div>
+        <div class="notif-message">{{ currentNotification.message }}</div>
+      </div>
+
+      <div class="card-placeholder" *ngIf="!currentNotification">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Action Buttons ── -->
+  <div class="actions">
+    <button class="btn-ignore" (click)="choose('ignore')" [disabled]="isProcessing">
+      <ion-icon name="close-outline"></ion-icon>
+      Abaikan
+    </button>
+    <button class="btn-open" (click)="choose('open')" [disabled]="isProcessing">
+      <ion-icon name="open-outline"></ion-icon>
+      Buka
+    </button>
+  </div>
+
+  <!-- Streak badge -->
+  <div class="streak-badge" *ngIf="showStreak">
+    🔥 Streak x{{ streak }}
+  </div>
+
+</ion-content>
